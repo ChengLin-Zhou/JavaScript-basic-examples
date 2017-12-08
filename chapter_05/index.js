@@ -97,6 +97,67 @@
 
     }
 
+    // concat slice splice数组操作方法
+    function operatorFun() {
+        var arr4 = [1,2,3];
+        arr4 = arr4.concat(9,8,7);
+        arr4 = arr4.concat([0,5]);    //可添加任意个类型的参数
+        console.log(arr4);
+        var newArr1 = arr4.slice(1);
+        var newArr2 = arr4.slice(1,3);
+        var newArr3 = arr4.slice(1,-2);
+        var newArr4 = arr4.slice(-4,-1);
+        console.log(newArr1);
+        console.log(newArr2);
+        console.log(newArr3);
+        console.log(newArr4);
+        console.log(arr4.splice(1,3));    //两个参数 删除位置及个数
+        console.log(arr4);
+        console.log(arr4.splice(1,0,2,5)); // 三个参数 中间参数为0 第一个起始位置 第二个之后是插入的内容项
+        console.log(arr4);
+        console.log(arr4.splice(1,2,5,5));  // 替换  第二个参数为替换几个 之后为替换的内容项
+        console.log(arr4);
+
+    }
+
+    // 查找indexOf和lastIndexOf   都可以接受两个参数要查找的项和开始的索引
+    function searchFun() {
+        var arr5 = [1,2,3,'r'];
+        console.log('indexOf: ' + arr5.indexOf(1));
+        console.log('lastIndexOf: ' + arr5.lastIndexOf(1));
+    }
+
+    //数组迭代every\some\filter\foreach\map
+    function arrLoop() {
+        var arr6 = [
+            {name: 1},
+            {name: 1},
+            {name: 1},
+            {name: 1}
+        ];
+
+        var resultE = arr6.every(function() {
+            
+        });
+
+        var resultS = arr6.some(function() {
+            
+        });
+
+        var resultF = arr6.filter(function() {
+            
+        });
+
+        var resultFo = arr6.forEach(function() {
+            
+        });
+
+        var resultM = arr6.map(function() {
+            
+        });
+
+    }
+
     isArrayFun(arr);
     transform({name: 23});
     transform([1,2,3]);
@@ -104,5 +165,7 @@
     toChar(arr);
     reverseFun();
     sortFun();
+    operatorFun();
+    searchFun();
 
 })();
