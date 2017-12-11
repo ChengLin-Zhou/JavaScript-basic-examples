@@ -131,31 +131,159 @@
     function arrLoop() {
         var arr6 = [
             {name: 1},
-            {name: 1},
-            {name: 1},
-            {name: 1}
+            {name: 2},
+            {name: 3},
+            {name: 4}
         ];
 
-        var resultE = arr6.every(function() {
-            
+        var resultE = arr6.every(function(indexE) {    // 返回值都为true才返回true
+            console.log(indexE);
+            // return 0;
         });
 
-        var resultS = arr6.some(function() {
-            
+        var resultS = arr6.some(function(indexS) {     // 返回值任意值为true返回true
+            return indexS;
         });
 
-        var resultF = arr6.filter(function() {
-            
+        var resultF = arr6.filter(function(indexF) {    // 返回符合条件的值
+            return indexF;
         });
 
-        var resultFo = arr6.forEach(function() {
-            
+        var resultFo = arr6.forEach(function(indexFo) { // 没有返回值
+            return indexFo;
         });
 
-        var resultM = arr6.map(function() {
-            
+        var resultM = arr6.map(function(indexM) {       // 返回处理后的结果
+            return indexM > 1;
         });
 
+        console.log(resultE);
+        console.log(resultS);
+        console.log(resultF);
+        console.log(resultFo);
+        console.log(resultM);
+
+    }
+
+    //reduce和reduceRight归并方法
+    function mergeFun() {
+        var arr7 = [1,2,3,4,5];
+        var resultAll = arr7.reduce(function(prev,cur,index,array0){
+            return prev + cur;
+        });
+
+        var resultAll1 = arr7.reduceRight(function(prev1,cur1,index1,array1){
+            return prev1 + cur1;
+        });
+
+        console.log(resultAll);
+        console.log(resultAll1);
+
+    }
+
+    // 正则表达式及匹配方法
+    function regFun() {
+        // exec()及test()
+        var reg = /.at/ig;
+        var str = "this is a string bat cat dat";
+        var resultT = reg.test(str);
+        var resultE = reg.exec(str);
+        console.log(resultT);
+        console.log(resultE);
+        console.log(reg.lastIndex);
+    }
+
+    // 函数callee\caller\this\prototype\call\apply\bind
+    function fun1(num) {
+        if (num <= 1) {
+            return num;
+        } else {
+            // return num * fun1(num - 1);
+            return num * arguments.callee(num -1); //保存着当前函数的指针
+        }
+    }
+
+    function fun2() {
+        console.log(arguments.callee.caller); //保存着调用该函数的函数的指针
+    }
+
+    function fun3() {
+        fun2();
+    }
+
+    var name = "ddddddddd";
+    var objG = {
+        name: "hhhhhhhhh",
+        getName: function () {
+            console.log(name);
+        }
+    }
+
+    function fun4() {
+        console.log(this.name);
+    }
+
+    var sumAll = fun1(3);
+
+    // toFixed\toExponential\toPrecision   指定位数小数\科学计数法\指定的合适格式
+    function toNumberFun() {
+        var num1 = 25.55455;
+        var num2 = 1000;
+        var num3 = 99;
+        console.log(num1.toFixed(2));
+        console.log(num2.toExponential());
+        console.log(num3.toPrecision(2));
+        console.log(num3.toExponential());
+        console.log(num3.toPrecision(1));
+    }
+
+    // charAt()获得字符   charCodeAt()获得字符编码   fromCharCode()
+    function charFun() {
+        var str = "hello world!";
+        console.log(str.charAt(0));
+        console.log(str.charCodeAt(0));
+        console.log(String.fromCharCode(104));
+    }
+
+    // 字符串操作方法  concat()  slice()  substr()  substring()
+    function strFun() {
+        var str1 = "hello";
+        console.log(str1.concat(1234));
+        console.log("slice: " + str1.slice(1,));               
+        console.log("substr: " + str1.substr(1,));
+        console.log("substring: " + str1.substring(1,));
+
+        console.log("slice: " + str1.slice(1,3));              // 不包含
+        console.log("substr: " + str1.substr(1,3));            // 包含第二个参数位置的值
+        console.log("substring: " + str1.substring(1,3));      // 不包含
+
+        console.log("slice: " + str1.slice(1,-1));             // 负数从后往前从-1开始 不包含后值
+        console.log("substr: " + str1.substr(2,-1));           // 不支持负数参数
+        console.log("substring: " + str1.substring(2,-2));     // 如果第二个参数是负数 则起始位置是0 第一个参数是结束位置
+
+        console.log("slice: " + str1.slice(-4,-1));
+        console.log("substr: " + str1.substr(-4,-1));
+        console.log("substring: " + str1.substring(-4,-1));
+    }
+
+    // 字符串位置方法  indexOf()   lastIndexOf()
+    function strIndex() {
+        var str2 = "hello";
+        console.log(str2.indexOf('h'));
+        console.log(str2.lastIndexOf('h'));
+    }
+
+    // 字符串trim()    toLowerCase()  toUpperCase()
+    function toChange() {
+        var str3 = " hEllo";
+        console.log(str3.trim());
+        console.log(str3.toLocaleLowerCase());
+        console.log(str3.toLocaleUpperCase());
+    }
+
+    // 字符串模式匹配方法match()、exec()、search()、replace()、htmlEscape()、split()、localeCompare()、html方法
+    function strPartern() {
+        
     }
 
     isArrayFun(arr);
@@ -167,5 +295,18 @@
     sortFun();
     operatorFun();
     searchFun();
+    arrLoop();
+    mergeFun();
+    regFun();
+    console.log(sumAll);
+    fun3();
+    fun4.apply(objG);   // 第一个参数是调用环境，第二个参数是参数数组
+    fun4.call(objG);    // 第一个参数是调用环境，之后的参数是函数所需参数
+    objG.getName();
+    toNumberFun();
+    charFun();
+    strFun();
+    strIndex();
+    toChange();
 
 })();
