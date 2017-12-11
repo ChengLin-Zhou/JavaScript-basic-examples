@@ -283,8 +283,23 @@
 
     // 字符串模式匹配方法match()、exec()、search()、replace()、htmlEscape()、split()、localeCompare()、html方法
     function strPartern() {
-        
+        var str4 = "hello cat bat dat";
+        console.log(str4.match('cat'));     // 接受一个参数正则，返回一个数组
+        console.log(str4.search('cat'));
+        console.log(str4.replace('cat', 'hhh'));
+        console.log(str4.localeCompare('blue'));
     }
+
+    // URI:  encodeURI()   encodeURIComponent()   decodeURI()   decodeURIComponent()
+    function toUri() {
+        var url = "http://www.bai.com?name=zcl";
+        var urlTo = encodeURIComponent(url);
+        var urlTo1 = decodeURIComponent(url);
+        console.log(encodeURIComponent(url));        // 编译不符合uri规则的特殊字符
+        console.log(decodeURIComponent(urlTo));      // 编译不符合uri规则的特殊字符
+        console.log(encodeURI(url));                 // 反编译被处理过的不符合uri规则的uri地址
+        console.log(decodeURI(urlTo1));              // 反编译被处理过的不符合uri规则的uri地址
+    } 
 
     isArrayFun(arr);
     transform({name: 23});
@@ -308,5 +323,7 @@
     strFun();
     strIndex();
     toChange();
+    strPartern();
+    toUri();
 
 })();
