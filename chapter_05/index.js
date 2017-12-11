@@ -301,6 +301,12 @@
         console.log(decodeURI(urlTo1));              // 反编译被处理过的不符合uri规则的uri地址
     } 
 
+    //Math对象及方法min()  max()  舍入方法 round()  ceil() floor()   random()随机数
+    function mathFun() {
+        var randomNum = Math.floor(Math.random()*9 + 1);
+        console.log(randomNum);
+    }
+
     isArrayFun(arr);
     transform({name: 23});
     transform([1,2,3]);
@@ -325,5 +331,6 @@
     toChange();
     strPartern();
     toUri();
+    mathFun();
 
 })();
