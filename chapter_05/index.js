@@ -303,8 +303,13 @@
 
     //Math对象及方法min()  max()  舍入方法 round()  ceil() floor()   random()随机数
     function mathFun() {
-        var randomNum = Math.floor(Math.random()*9 + 1);
+        var randomNum = Math.floor(Math.random()*12 + 1);
         console.log(randomNum);
+        var timeoutF = setTimeout(loggerFun,2000);   // 返回调用id
+        console.log(timeoutF);
+        function loggerFun() {
+            console.log('hhhhhh');
+        }
     }
 
     isArrayFun(arr);
