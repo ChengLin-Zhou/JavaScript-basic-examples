@@ -12,11 +12,15 @@
         var str = "hello cat bat dat";
         var re = /.at/ig;
 
+        var strM = "mom and dad and baby";
+        var reM = /mom( and dad( and baby)?)?/ig;    // 捕获组
+
         console.log(re.test(str));
         console.log(re.exec(str));
         console.log(str.search(re));
         console.log(str.match(re));
         console.log(str.replace(re, 'word')); 
+        console.log(reM.exec(strM));
 
     }
 
