@@ -12,7 +12,6 @@
     // 保存"Backbone"变量被覆盖之前的值
     // 如果出现命名冲突或考虑到规范, 可通过Backbone.noConflict()方法恢复该变量被Backbone占用之前的值, 并返回Backbone对象以便重新命名
     var previousBackbone = root.Backbone;
-    console.log(previousBackbone);
 
     // 将Array.prototype中的slice和splice方法缓存到局部变量以供调用
     var slice = Array.prototype.slice;
