@@ -1,9 +1,9 @@
 (function() {
     // 正则表达式
     // g  表示全局模式,即模式将被应用到所有字符串，而非在发现第一个匹配项时立即停止。
-    
+
     // i  表示不区分大小写模式。
-    
+
     // m  表示多行模式，即在到达一行文本末尾时还在继续查找下一行中是否存在于模式匹配的项。
 
     // 正则方法
@@ -19,7 +19,7 @@
         console.log(re.exec(str));
         console.log(str.search(re));
         console.log(str.match(re));
-        console.log(str.replace(re, 'word')); 
+        console.log(str.replace(re, 'word'));
         console.log(reM.exec(strM));
 
     }
@@ -27,71 +27,71 @@
     // 正则分组（）
     function regGroup() {
         var str = '2013-6-7';
-        
+
         var re = /(\d+)(-)/g;
 
         var result;
-        
+
         result = str.replace(re,function($0,$1,$2,$3){
             //第一个参数：$0（整体）
             //第二个参数 : $1(第一括号里的正则)
             //第三个参数 : $1(第二个括号里的正则)
-            
+
             console.log($0);
             // console.log($1);
             // console.log($2);
             // console.log($3);
-            
+
             //return $1 + '.';
-            
+
             return $0.substring(0,$0.length-1) + '.';
-            
+
         });
-        
-        console.log( result );   //2013.6.7  
+
+        console.log( result );   // 2013.6.7
     }
 
     // []一组类似元素 代表一个值
     function regLike() {
         var str = 'abc';
-        
+
         var re = /a[bde]c/;    //字符类中的是“或”的关系 但是整体的位数要和字符串的一致
-        
+
         console.log( re.test(str) );  //true
     }
 
     // ^ 放在开始处[]外边代表以什么开始，放在[]里边代表排除，如果设置了 RegExp 对象的 Multiline 属性，^ 也匹配 'n' 或 'r' 之后的位置
     function regExclude() {
         var str = 'a0c';
-        
-        var re = /a[^bde]c/;        //取反 
-        
+
+        var re = /a[^bde]c/;        // 取 反
+
         console.log( re.test(str) );   //false
     }
 
     // 找出字符串中最多的字符和个数
     function regSearchStrMost() {
         var str = 'assssjdssskssalsssdkjsssdss';
-    
+
         var arr = str.split('');
         str = arr.sort().join('');
-        
+
         var value = '';
         var index = 0;
-        
+
         var re = /(\w)\1+/g;
-        
+
         str.replace(re,function($0,$1){
-            
+
             //alert($0);
-            
+
             if(index<$0.length){
                 index = $0.length;
                 value = $1;
             }
-            
+
         });
-        
+
         console.log('最多的字符:'+value+',重复的次数:'+index);
     }
 
@@ -131,7 +131,7 @@
         // \n  标识一个八进制转义值或一个向后引用。如果 n 之前至少 n 个获取的子表达式，则 n 为向后引用。否则，如果 n 为八进制数字 (0-7)，则 n 为一个八进制转义值
         // \nm  标识一个八进制转义值或一个向后引用。如果 nm 之前至少有 nm 个获得子表达式，则 nm 为向后引用。如果 nm 之前至少有 n 个获取，则 n 为一个后跟文字 m 的向后引用。如果前面的条件都不满足，若 n 和 m 均为八进制数字 (0-7)，则 nm 将匹配八进制转义值 nm
         // \nml  如果 n 为八进制数字 (0-3)，且 m 和 l 均为八进制数字 (0-7)，则匹配八进制转义值 nml
-        
+
         var str1 = "hello word hahahaha cat bat dat";
         var re1 = /(ha){2,}/ig;
         var re2 = /(cat)*/ig;
@@ -150,10 +150,10 @@
     function regStartEnd() {
         var str2 = "hello";
         var str3 = ' hello ';
-            
+
         var re6 = /^\s+|\s+$/g;
         var re7 = /^h(\w)+o$/ig;
-            
+
         var result = str3.replace(re6,'');
 
         if(result !== str3) {
@@ -174,7 +174,7 @@
         var str4 = "372321199212123550";
         var re8 = /[1-9]\d{14}|[1-9]\d{17}|[1-9]\d{16}x/ig;
         console.log('reg8: ' + re8.test(str4));
-        
+
     }
 
 
